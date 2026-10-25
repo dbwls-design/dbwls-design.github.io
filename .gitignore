@@ -1,0 +1,5 @@
+# 백업 파일은 웹에 올리지 않음
+*.backup.html
+
+# Claude 설정 폴더
+.claude/

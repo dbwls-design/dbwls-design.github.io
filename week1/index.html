@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yujin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500&family=Noto+Serif+KR:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    /* 색 정의 — 여기만 바꾸면 전체 색이 바뀝니다 */
+    :root {
+      --burgundy: #6e1f2c;
+      --cream: #efe6d2;
+      --green: #2f4d3a;
+      --bg: #edf3ec;
+      --paper: #ffffff;
+      --ink: #1c1c1c;
+      --muted: #6b6862;
+      --line: #e3e0d8;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 48px 16px;
+      background: var(--bg);
+      font-family: "Noto Sans KR", sans-serif;
+      font-weight: 300;
+      color: var(--ink);
+    }
+
+    .card {
+      width: 100%;
+      max-width: 400px;
+      background: var(--paper);
+      padding: 64px 48px 48px;
+      animation: fade 0.5s ease;
+    }
+
+    @keyframes fade {
+      from { opacity: 0; transform: translateY(8px); }
+      to   { opacity: 1; transform: none; }
+    }
+
+    /* 페이지 전환: body에 show-about 클래스가 붙으면 두 번째 카드를 보여줌 */
+    #about { display: none; }
+    body.show-about #about { display: block; }
+    body.show-about #profile { display: none; }
+
+    .label {
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    h1 {
+      font-family: "Noto Serif KR", serif;
+      font-weight: 600;
+      font-size: 48px;
+      letter-spacing: 0.04em;
+      margin: 96px 0 20px;
+    }
+
+    .intro {
+      font-size: 15px;
+      line-height: 1.8;
+      color: #4a4a4a;
+      word-break: keep-all;
+      min-height: 1.8em;
+    }
+
+    /* 타이핑 커서 */
+    .caret {
+      display: inline-block;
+      width: 1px;
+      height: 1.1em;
+      margin-left: 2px;
+      vertical-align: -0.15em;
+      background: var(--burgundy);
+      animation: blink 1s steps(1) infinite;
+    }
+    @keyframes blink { 50% { opacity: 0; } }
+
+    .divider {
+      width: 24px;
+      border: 0;
+      border-top: 1px solid var(--ink);
+      margin: 64px 0 24px;
+    }
+
+    /* About 링크 */
+    .link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: "Noto Serif KR", serif;
+      font-size: 20px;
+      color: var(--ink);
+      text-decoration: none;
+      padding-bottom: 4px;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s, gap 0.2s;
+    }
+    .link:hover { border-color: var(--ink); gap: 16px; }
+    .link span { color: var(--burgundy); }
+    .link.back { font-size: 13px; font-family: "Noto Sans KR", sans-serif; color: var(--muted); }
+    .link.back:hover { color: var(--ink); }
+
+    /* About 페이지 정보 목록 */
+    .info { margin-top: 48px; }
+    .info div {
+      display: grid;
+      grid-template-columns: 88px 1fr;
+      gap: 16px;
+      padding: 18px 0;
+      border-top: 1px solid var(--line);
+    }
+    .info div:last-child { border-bottom: 1px solid var(--line); }
+    .info dt { padding-top: 3px; }
+    .info dd {
+      font-size: 14px;
+      line-height: 1.7;
+      color: #4a4a4a;
+      word-break: keep-all;
+    }
+
+    .insta {
+      color: inherit;
+      text-decoration: none;
+      border-bottom: 1px solid var(--line);
+      transition: border-color 0.2s;
+    }
+    .insta:hover { border-color: var(--ink); }
+
+    .palette {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      list-style: none;
+      padding-top: 3px;
+    }
+    .palette span {
+      display: block;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+    }
+
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 80px;
+    }
+    .footer.center { justify-content: center; }
+    /* About 페이지: Back은 왼쪽, 날짜는 가운데 */
+    .footer.split {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+    }
+
+    /* 휴대폰 화면 */
+    @media (max-width: 480px) {
+      body { padding: 24px 16px; }
+      .card { padding: 48px 28px 36px; }
+      h1 { font-size: 40px; margin-top: 72px; }
+      .divider { margin-top: 48px; }
+      .info div { grid-template-columns: 72px 1fr; gap: 12px; }
+      .footer { margin-top: 64px; }
+    }
+  </style>
+</head>
+<body>
+  <!-- 첫 페이지 -->
+  <article class="card" id="profile">
+    <p class="label">Profile — No. 01</p>
+
+    <h1>Yujin</h1>
+    <p class="intro"><span class="typed">이유진, 시각디자인과 지망</span><span class="caret"></span></p>
+
+    <hr class="divider">
+
+    <a class="link" href="#about">About <span>→</span></a>
+
+    <footer class="footer center">
+      <span class="label">2026.10.25</span>
+    </footer>
+  </article>
+
+  <!-- 두 번째 페이지 (About) -->
+  <article class="card" id="about">
+    <p class="label">About — No. 02</p>
+
+    <h1>About</h1>
+
+    <dl class="info">
+      <div>
+        <dt class="label">Colours</dt>
+        <dd>
+          <ul class="palette">
+            <li title="버건디"><span style="background: var(--burgundy)"></span></li>
+            <li title="크림색"><span style="background: var(--cream)"></span></li>
+            <li title="녹색"><span style="background: var(--green)"></span></li>
+          </ul>
+        </dd>
+      </div>
+      <div>
+        <dt class="label">Home</dt>
+        <dd>포항</dd>
+      </div>
+      <div>
+        <dt class="label">School</dt>
+        <dd>고등학교 재학 중</dd>
+      </div>
+      <div>
+        <dt class="label">Insta</dt>
+        <dd><a class="insta" href="https://www.instagram.com/_u.in88/" target="_blank" rel="noopener">@_u.in88</a></dd>
+      </div>
+    </dl>
+
+    <footer class="footer split">
+      <a class="link back" href="#profile">← Back</a>
+      <span class="label">2026.10.25</span>
+    </footer>
+  </article>
+
+  <script>
+    // About / Back 링크를 누르면 카드를 바꿔 보여줌
+    document.querySelectorAll('a.link').forEach(function (a) {
+      a.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.body.classList.toggle('show-about', a.getAttribute('href') === '#about');
+        window.scrollTo(0, 0);
+      });
+    });
+
+    // 소개 문구를 한 글자씩 타이핑
+    var typed = document.querySelector('.typed');
+    var text = typed.textContent;
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      typed.textContent = '';
+      var i = 0;
+      setTimeout(function type() {
+        typed.textContent = text.slice(0, ++i);
+        if (i < text.length) setTimeout(type, 110);
+      }, 600);
+    }
+  </script>
+</body>
+</html>
