@@ -32,6 +32,8 @@
 - 좋아하는 색: 흰색, 버건디, 올리브 그린, 블랙
 - 좋아하는 분위기: 맥시멀리즘, 빈티지, 레트로
 - 피하고 싶은 것: 형광색, 너무 어두운 배색
-- 좋아하는 스타일, 작가, 브랜드: Brutalism, Surrealist Product Photography, ASCII Art
+- 좋아하는 스타일, 작가, 브랜드
+  - 스타일: Brutalism, Surrealist Product Photography, ASCII Art
+  - 작가: 요시다 유니 (Yoshida Yuni)
 
 다른 취향이 떠오를 수도 있으니 작업 중간중간 내 취향을 물어봐줘.
