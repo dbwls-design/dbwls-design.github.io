@@ -3,3 +3,6 @@
 
 # Claude 설정 폴더
 .claude/
+
+# 참고 자료(사진, notes.md)는 공개하지 않음
+refs/
